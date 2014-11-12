@@ -66,7 +66,7 @@ int main()
 				string numstr(nextDigitIt, nextAlphaIt);
 				vector<int> numvec;
 
-				for (const auto &ch : numstr) {
+				for (auto ch : numstr) {
 					numvec.push_back(ch - '0');
 				}
 
