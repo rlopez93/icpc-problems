@@ -68,7 +68,7 @@ int main()
 				vector<int> numvec;
 
 				for (const auto &ch : numstr) {
-					numvec.push_back((ch - '0') % 3);
+					numvec.push_back(ch - '0');
 				}
 
 				numbers.push_back(numvec);
