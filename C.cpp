@@ -52,7 +52,6 @@ bool isAlph(char c)
 int main()
 {
 	vector<vector<int>> numbers;
-	vector<ull> cons;
 	string st;
 
 	while(cin >> st) {
