@@ -3,6 +3,7 @@
 #include <string>
 #include <cctype>
 #include <algorithm>
+#include <numeric>
 using namespace std;
 typedef unsigned int uint;
 typedef unsigned long long ull;
@@ -11,7 +12,7 @@ ull submod(const vector<int> &number, vector<ull> &cons)
 {
 	auto sz = number.size();
 	uint start;
-	
+
 	int sum = 0;
 	ull cnt = 0;
 
