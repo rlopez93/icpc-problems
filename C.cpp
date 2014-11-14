@@ -5,21 +5,17 @@
 #include <algorithm>
 #include <numeric>
 using namespace std;
-typedef unsigned int uint;
 typedef unsigned long long ull;
 
-ull submod(const vector<int> &number, vector<ull> &cons) 
+ull submod(const vector<unsigned> &number, vector<ull> &cons) 
 {
 	auto sz = number.size();
-	uint start;
 
-	int sum = 0;
-	ull cnt = 0;
+	for (decltype(sz) x = 1u; x <= sz; ++x) {
+		auto sum = 0u;
+		auto cnt = 0ull;
 
-	for (uint x = 1u; x <= sz; ++x) {
-		sum = 0;
-		cnt = 0;
-		start = sz - x;
+		auto start = sz - x;
 
 		for (auto i = start; i < sz; ++i) {
 			sum += number[i];
@@ -52,30 +48,32 @@ bool isAlph(char c)
 
 int main()
 {
-	vector<vector<int>> numbers;
+	vector<vector<unsigned>> numbers;
 	string st;
 
 	while(cin >> st) {
 
-		auto endIt = st.end(), nextDigitIt = st.begin(), nextAlphaIt = st.begin();	
+		auto endIt = st.end(),
+			nextDigitIt = st.begin(),
+			nextAlphaIt = st.begin();
 
 		while (nextDigitIt != endIt && nextAlphaIt != endIt) {
-			nextDigitIt = find_if(nextAlphaIt, endIt, isDigit);	
+			nextDigitIt = find_if(nextAlphaIt, endIt, isDigit);
 			nextAlphaIt = find_if(nextDigitIt, endIt, isAlph);
 
 			if (nextDigitIt != endIt) {
 				string numstr(nextDigitIt, nextAlphaIt);
-				vector<int> numvec;
+				vector<unsigned> numvec;
 
 				for (auto ch : numstr) {
-					numvec.push_back(ch - '0');
+					numvec.push_back(static_cast<unsigned>(ch - '0'));
 				}
 
 				numbers.push_back(numvec);
 			}
 		}
 
-		ull cnt = 0;
+		auto cnt = 0ull;
 
 		for (const auto &vi : numbers) {
 			vector<ull> cons(vi.size(), 0ull);
